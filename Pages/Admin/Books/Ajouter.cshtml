@@ -1,0 +1,53 @@
+﻿@page
+@model BiblioTech.Pages.Admin.Books.AjouterModel
+@{
+}
+<form method="Post">
+    <div class="form-group">
+        <label>Titre:</label>
+        <input type="text" class="form-control" name="Titre" placeholder="Titre">
+    </div>
+    <div class="form-group">
+        <label>Description:</label>
+        <input type="text" class="form-control" name="Description" placeholder="Description">
+    </div>
+    <div class="form-group">
+        <label>Annee:</label>
+        <input type="text" class="form-control" name="Annee" placeholder="Annee">
+    </div>
+    <div class="form-group">
+        <label>Auteur:</label>
+        <select class="form-select" name="IDA">
+            <option value="DEFAULT" selected>Choisir un Auteur ...</option>
+            @foreach (var item in Model.listAut)
+            {
+                <option value="@item.id">@item.name</option>
+            }
+        </select>
+        <a href="/Admin/Author/Ajouter" style="display:inline-block"><i class="fa-solid fa-plus"></i></a>
+    </div>
+    <div class="form-group">
+        <label>Editeur:</label>
+        <select class="form-select" name="IDE">
+            <option value="DEFAULT" selected>Choisir un Editeur ...</option>
+            @foreach (var item in Model.listEdit)
+            {
+                <option value="@item.id">@item.name</option>
+            }
+        </select>
+        <a style="display:inline-block" href=" /Admin/Editor/Ajouter"><i class="fa-solid fa-plus"></i></a>
+    </div>
+    <div class="form-group">
+        <label>Categorie:</label>
+        <select class="form-select" name="IDC">
+            <option value="DEFAULT" selected>Choisir une Categorie ...</option>
+            @foreach (var item in Model.listCat)
+            {
+                <option value="@item.id">@item.name</option>
+            }
+        </select>
+        <a href="/Admin/Category/Ajouter" style="display:inline-block"><i class="fa-solid fa-plus"></i></a>
+    </div>
+    <small class="form-text h3 text-danger">@Model.Errormessage</small>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

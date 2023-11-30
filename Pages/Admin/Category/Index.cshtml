@@ -1,0 +1,41 @@
+﻿@page
+@model BiblioTech.Pages.Admin.Category.CategoryModel
+@{
+	ViewData["model"] = "Categorie";
+}
+<div class="mt-5 text-center">
+	<a href="/Admin/Category/Ajouter" type="button" class="w-50 btn btn-outline-success"><i class="fa-solid fa-plus"></i> Ajouter @ViewData["model"]</a>
+</div>
+<div class="table-responsive">
+<table class="table">
+<thead>
+<tr>
+<th>ID </th>
+<th>Nom </th>
+<th>Description </th>
+</tr>
+</thead>
+<tbody>
+@foreach (var item in Model.listCategories)
+{
+
+<tr>
+<td>@item.id</td>
+<td>@item.name</td>
+<td>@item.descr</td>
+<td>
+					<form asp-page="/Admin/Category/Edit" method="post">
+							<input type="hidden" value="@item.id" name="id">
+							<input type="submit" class="btn btn-info" value="Modifier" >
+					</form>
+						<form asp-page="/Admin/Category/Delete" method="Post">
+							<input type="hidden" value="@item.id" name="id">
+							<input type="submit" class="btn btn-danger" value="Supprimer">
+					</form>
+</td>
+</tr>
+
+}
+</tbody>
+</table>
+</div>

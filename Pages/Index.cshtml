@@ -1,0 +1,18 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "BiblioTech";
+}
+<div class="text-center">
+    <span>|</span>
+    <script>
+        var i=0;
+        var quote = "Un livre est une fenêtre par laquelle on s'évade.";
+        var label = document.getElementsByClassName("home")[0].getElementsByClassName("container")[0].getElementsByTagName("span")[0];
+        var writer = setInterval(()=>{
+            label.innerHTML = label.innerHTML.substring(0, label.innerHTML.length - 1) + quote[i++] + '|';
+               if (i==quote.length)
+                    clearInterval(writer);
+        },100);
+    </script>
+</div>
