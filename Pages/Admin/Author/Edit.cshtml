@@ -1,0 +1,25 @@
+﻿@page
+@model BiblioTech.Pages.Admin.Author.EditModel
+@{	
+}
+<form method="Post">
+    <div class="form-group">
+        <label >Nom:</label>
+        <input type="text" class="form-control" value="@Model.aut.name" name="Nom" placeholder="Nom">
+    </div>
+    <div class="form-group">
+        <label >Email address:</label>
+        <input type="text" class="form-control" value="@Model.aut.email"  name="Email" aria-describedby="emailHelp" placeholder="Email">
+      </div>
+      <div class="form-group">
+            <label >Télephone</label>
+        <input type="text" class="form-control" value="@Model.aut.telephone" name="Telephone" placeholder="Telephone">
+      </div>
+      <div class="form-group">
+            <label >Adresse</label>
+        <input type="Text" class="form-control" value="@Model.aut.adresse" name="Adresse" placeholder="Adresse">
+      </div>
+    <input type="hidden" class="form-control" value="@Model.aut.id" name="id" placeholder="Adresse">
+    <small class="form-text h3 text-danger">@Model.Errormessage</small>
+      <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,62 @@
+﻿@page
+@model BiblioTech.Pages.Admin.Books.BooksModel
+@{
+	ViewData["model"] = "Livre";
+}
+<div class="mt-5 text-center">
+	<a href="/Admin/Books/Ajouter" type="button" class="w-50 btn btn-outline-success"><i class="fa-solid fa-plus"></i> Ajouter @ViewData["model"]</a>
+</div>
+<div class="table-responsive">
+<table class="table">
+<thead>
+<tr>
+<th>ID </th>
+<th>Titre</th>
+<th>Description</th>
+<th>Année</th>
+<th>Auteur </th>
+<th>Editeur </th>
+<th>Categorie </th>
+</tr>
+</thead>
+<tbody>
+@foreach (var item in Model.listLivres)
+{
+
+<tr>
+<td>@item.id</td>
+<td>@item.titre</td>
+<td>@item.descr</td>
+@if(item.annee!=0)
+{
+	<td>@item.annee</td>
+}
+else
+{
+	<td></td>
+}
+<form asp-page="/Admin/Author/Index" method="post">
+					<td><input type="hidden" value="@item.aut.id" name="id"><input type="submit" value="@item.aut.name"></td>
+</form>
+<form asp-page="/Admin/Editor/Index" method="post">
+					<td><input type="hidden" value="@item.edit.id" name="id"><input type="submit" value="@item.edit.name"></td>
+</form>
+<form asp-page="/Admin/Category/Index" method="post">
+					<td><input type="hidden" value="@item.cat.id" name="id"><input type="submit" value="@item.cat.name"></td>
+</form>
+<td>
+						<form asp-page="/Admin/Books/Edit" method="post">
+							<input type="hidden" value="@item.id" name="id">
+							<input type="submit" class="btn btn-info" value="Modifier" >
+					</form>
+						<form asp-page="/Admin/Books/Delete" method="Post">
+							<input type="hidden" value="@item.id" name="id">
+							<input type="submit" class="btn btn-danger" value="Supprimer">
+					</form>
+</td>
+</tr>
+
+}
+</tbody>
+</table>
+</div>

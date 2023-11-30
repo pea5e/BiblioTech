@@ -1,0 +1,77 @@
+﻿@page
+@model BiblioTech.Pages.Admin.Books.EditModel
+@{
+    if (Model.liv.annee>0)
+        ViewData["annee"] = Model.liv.annee;
+    else
+        ViewData["annee"] = "";
+
+}
+<form method="Post">
+    <div class="form-group">
+        <label>Titre:</label>
+        <input type="text" class="form-control" value="@Model.liv.titre" name="Titre" placeholder="Titre">
+    </div>
+    <div class="form-group">
+        <label>Description:</label>
+        <input type="text" class="form-control" value="@Model.liv.descr" name="Description" placeholder="Description">
+    </div>
+    <div class="form-group">
+        <label>Annee:</label>
+        <input type="text" class="form-control" value="@ViewData["annee"]" name="Annee" placeholder="Annee">
+    </div>
+    <div class="form-group">
+        <label>Auteur:</label>
+        <select class="form-select" name="IDA">
+            @foreach (Author.Auteur item in Model.listAut)
+            {
+                if (item.id == Model.liv.aut.id )
+                {
+                    <option selected value="@item.id">@item.name</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.name</option>
+                }
+            }
+        </select>
+        <a href="/Admin/Author/Ajouter" style="display:inline-block"><i class="fa-solid fa-plus"></i></a>
+    </div>
+    <div class="form-group">
+        <label>Editeur:</label>
+        <select class="form-select" name="IDE">
+            @foreach (Editor.Editeur item in Model.listEdit)
+            {
+                @if (item.id == Model.liv.edit.id)
+                {
+                    <option selected value="@item.id">@item.name</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.name</option>
+                }
+            }
+        </select>
+        <a href="/Admin/Editor/Ajouter" style="display:inline-block"><i class="fa-solid fa-plus"></i></a>
+    </div>
+    <div class="form-group">
+        <label>Categorie:</label>
+        <select class="form-select" name="IDC">
+            @foreach (Category.Categorie item in Model.listCat)
+            {
+                @if (item.id == Model.liv.cat.id)
+                {
+                    <option selected value="@item.id">@item.name</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.name</option>
+                }
+            }
+        </select>
+        <a href="/Admin/Category/Ajouter" style="display:inline-block"><i class="fa-solid fa-plus"></i></a>
+    </div>
+    <input type="hidden" class="form-control" value="@Model.liv.id" name="id" placeholder="Adresse">
+    <small class="form-text h3 text-danger">@Model.Errormessage</small>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

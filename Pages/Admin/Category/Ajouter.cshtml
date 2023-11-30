@@ -1,0 +1,16 @@
+﻿@page
+@model BiblioTech.Pages.Admin.Category.AjouterModel
+@{
+}
+<form method="Post">
+    <div class="form-group">
+        <label >Nom:</label>
+        <input type="text" class="form-control"  name="Nom" placeholder="Nom">
+    </div>
+    <div class="form-group">
+        <label >Description:</label>
+        <input type="text" class="form-control" name="Description" aria-describedby="emailHelp" placeholder="Description">
+      </div>
+    <small class="form-text h3 text-danger">@Model.Errormessage</small>
+      <button type="submit" class="btn btn-primary">Submit</button>
+</form>
