@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "V/mXre+YORPZNKrTROmy0A0c78QmgHup+YVaJyJQeR4=",
+  "Hash": "1MJuYWqsbnRGXGHukwMLf0IwN4pTW4gri098IdPq3NA=",
   "Source": "BiblioTech",
   "BasePath": "_content/BiblioTech",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "C:\\Users\\sindi\\source\\repos\\BiblioTech\\BiblioTech\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\BiblioTech.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\sindi\\source\\repos\\BiblioTech\\BiblioTech\\wwwroot\\bibliotech.png",
+      "SourceId": "BiblioTech",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sindi\\source\\repos\\BiblioTech\\BiblioTech\\wwwroot\\",
+      "BasePath": "_content/BiblioTech",
+      "RelativePath": "bibliotech.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\bibliotech.png"
+    },
+    {
       "Identity": "C:\\Users\\sindi\\source\\repos\\BiblioTech\\BiblioTech\\wwwroot\\css\\beatriz-perez-moya-XN4T2PVUUgk-unsplash.jpg",
       "SourceId": "BiblioTech",
       "SourceType": "Discovered",
@@ -66,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\beatriz-perez-moya-XN4T2PVUUgk-unsplash.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\sindi\\source\\repos\\BiblioTech\\BiblioTech\\wwwroot\\css\\Defaultbook.jpg",
+      "SourceId": "BiblioTech",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sindi\\source\\repos\\BiblioTech\\BiblioTech\\wwwroot\\",
+      "BasePath": "_content/BiblioTech",
+      "RelativePath": "css/Defaultbook.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Defaultbook.jpg"
     },
     {
       "Identity": "C:\\Users\\sindi\\source\\repos\\BiblioTech\\BiblioTech\\wwwroot\\css\\rhema-kallianpur-2W3bDp7K1oQ-unsplash.jpg",
@@ -1154,6 +1188,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\sindi\\source\\repos\\BiblioTech\\BiblioTech\\wwwroot\\Tech-font.otf",
+      "SourceId": "BiblioTech",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sindi\\source\\repos\\BiblioTech\\BiblioTech\\wwwroot\\",
+      "BasePath": "_content/BiblioTech",
+      "RelativePath": "Tech-font.otf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Tech-font.otf"
     }
   ]
 }

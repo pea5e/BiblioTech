@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "qMHoTBqAzACLekFxEyzBM7AWoD8hl2jpANOLyiql1kBzS/xJGtj9HZOI/r/dU5Zkzaky0MdyJjpXTBUE/5g9TA==",
+  "dgSpecHash": "D38z2kt7+A8ovbzKRfUJMGgFNqUQOedetHHk4IJ+Z7/bGeVXujGgyhfCGQqNd7hRNi42ActGV6vTEBU4GjAgDw==",
   "success": true,
   "projectFilePath": "C:\\Users\\sindi\\source\\repos\\BiblioTech\\BiblioTech\\BiblioTech.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sindi\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\sindi\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\sindi\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\sindi\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\sindi\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\sindi\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

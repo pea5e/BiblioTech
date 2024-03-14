@@ -1,0 +1,51 @@
+﻿@page
+@model BiblioTech.Pages.LoginModel
+@{
+}
+
+@*if (Model.session != null)
+{
+    <script>
+        document.cookie = "username=@Model.session; expires=Thu, 26 Dec 2030 12:00:00 UTC; path=/Blog/Login";
+    </script>
+}*@
+<script>
+    function isused(mail) {
+        fetch("/api/v1/emailused?email=" + mail.value)
+            .then((res) => res.text())
+            .then((data) => {
+
+                if (data == "false") {
+                    mail.className = mail.className + " is-invalid";
+                }
+            })
+        /*
+     res.json())
+    .then((data) => {
+        console.log(data)
+    })
+    .catch((err) => console.log(err));
+        body: JSON.stringify({
+            'email': mail
+        }),
+               */
+    }
+</script>
+
+<form method="post" class="login w-50">
+    <fieldset>
+        <legend>Login</legend>
+        <div class="form-group">
+            <label class="form-label mt-4">Email address</label>
+            <input type="email" name="email" class="form-control" onchange="isused(this)" aria-describedby="emailHelp" placeholder="Enter email">
+            <small class="invalid-feedback h1">Email n'existe pas</small>
+        </div>
+        <div class="form-group">
+            <label class="form-label mt-4">Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Password" autocomplete="off">
+        </div>
+        <small class="form-text h3 text-danger">@Model.Errormessage</small>
+        <button type="submit" class="btn btn-success">Login</button>
+    </fieldset>
+</form>
+

@@ -1,0 +1,109 @@
+﻿@page
+@model BiblioTech.Pages.Blog.IndexModel
+@{
+}
+<canvas id="Words-Trans"></canvas>
+<h1 class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">Notre Blog en ligne</h1>
+<div>
+    <form class="d-flex login-form-mobile justify-content-center">
+        <a class="btn btn-outline-primary mr-2 my-2 my-sm-0" asp-area="" asp-page="/Login">Log In</a>
+        <a class="btn btn-outline-secondary mr-2 my-2 my-sm-0" asp-area="" asp-page="/Signup">Sign Up</a>
+    </form>
+</div>
+<script>
+    document.body.onload = () => {
+        const canvas = document.getElementById("Words-Trans");
+        console.log(document.getElementsByTagName("footer")[0]);
+        canvas.height = document.body.clientHeight - document.getElementsByTagName("header")[0].getBoundingClientRect().height - document.getElementsByTagName("footer")[0].getBoundingClientRect().height;
+        canvas.width = document.body.clientWidth;
+        canvas.style.height = canvas.height.toString() + "px";
+        console.log(canvas.width, canvas.height)
+        const canvasctx = canvas.getContext("2d");
+
+        const max_opacity = 70;
+        const min_opacity = 20;
+
+        const max_size = 4;
+        const min_size = 0;
+
+        const total_nodes = 700;
+        const node_base_color = "000000";
+
+        class node {
+
+            constructor(x, y, size, x_dir, y_dir, opacity,word) {
+
+                this.x = x;
+                this.y = y;
+                this.x_dir = x_dir;
+                this.y_dir = y_dir;
+                this.size = size;
+                this.opacity = opacity;
+                this.word = ["Biblio","Tech"][word];
+            }
+
+            draw() {
+                canvasctx.fillStyle = "#" + node_base_color + this.opacity;
+                //canvasctx.font = `${this.size}px sans-serif`;
+                canvasctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, true);
+                canvasctx.arc(this.x, this.y, this.size - 1, 0, Math.PI * 2, true);
+                canvasctx.fillRect(this.x - (this.size / 2), this.y - (this.size / 2), this.size, this.size);
+                //canvasctx.fillText(this.word, this.x, this.y)
+            }
+
+            update() {
+                this.x += this.x_dir;
+                this.y += this.y_dir;
+            }
+
+            mirror_x()
+            {
+                this.x_dir *= -1;
+            }
+
+            mirror_y()
+            {
+                this.y_dir *= -1;
+            }
+
+            current_pos() {
+                return [this.x, this.y];
+            }
+
+        }
+
+        canvasctx.beginPath();
+        var nodes = new Array()
+
+        for (let i = 1; i <= total_nodes; i++) {
+            nodes.push(new node(Math.random() * canvas.width | 0, Math.random() * canvas.height | 0, (Math.random() * (max_size - min_size) + min_size | 0) + 1, Math.random() * 2 - 1, Math.random() * 2 - 1, (Math.random() * (max_opacity - min_opacity) + min_opacity | 0).toString(), Math.random() * 10 % 2 | 0));
+        }
+
+        setInterval(() => {
+            canvasctx.clearRect(0, 0, canvas.width, canvas.height);
+            var last_node = [-100, -100];
+            canvasctx.beginPath();
+            nodes.forEach((n) => {
+
+                if (n.x < 0 || n.x > canvas.width)
+                {
+                    n.mirror_x();
+                }
+                if (n.y < 0 || n.y > canvas.height) {
+                    n.mirror_y();
+                }
+                canvasctx.closePath();
+                canvasctx.fill();
+                canvasctx.beginPath();
+
+                n.draw();
+                n.update();
+                last_node = n.current_pos();
+
+            });
+        }, 100);
+
+    }
+
+
+</script>

@@ -7,84 +7,116 @@
     @*<title>@ViewData["Title"]</title>*@
     <title>BiblioTech</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/BiblioTech.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     @{
         // Uri url = new Uri(String.Format("{0}://{1}{2}{3}", Context.Request.Scheme, Context.Request.Host, Context.Request.Path, Context.Request.QueryString));
-        string path = Context.Request.Path;
+        string path = Context.Request.Path.ToString().ToLower();
         string cls = "";
         if (path == "/")
         {
             cls = "home";
         }
-        ViewData["path"] = path.ToLower();
+        else if (path == "/books")
+        {
+            cls = "search";
+        }
+        else if (path == "/blog")
+        {
+            cls = "blog";
+        }
+        ViewData["path"] = path;
         ViewData["classe"] = cls;
         
     }
 </head>
 <body class="@ViewData["classe"]">
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow" data-bs-theme="dark">
-            <div class="container-fluid">
-                @if (!ViewData["path"].ToString().StartsWith("/admin"))
-                {
-                    <a class="navbar-brand" asp-area="" asp-page="/Admin/Index"><img width="20" src="~/logo.png" />BiblioTech</a>
-                }
-                else{
+    @*if (ViewData["path"].ToString() != "/login" && ViewData["path"].ToString() != "/signup")
+    {*@
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow" data-bs-theme="dark">
+                <div class="container-fluid">
+                    @*if (!ViewData["path"].ToString().StartsWith("/admin"))
+                    {
+                        <a class="navbar-brand" asp-area="" asp-page="/Admin/Index"><img width="20" src="~/logo.png" />BiblioTech</a>
+                    }
+                    else{*@
                     <a class="navbar-brand" asp-area="" asp-page="/Index"><img width="20" src="~/logo.png" />BiblioTech</a>
-                }
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                @if (!ViewData["path"].ToString().StartsWith("/admin"))
-                {
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Accueil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Books">Nos Livres</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/About">À propos</a>
-                            </li>
-                        </ul>
-                        @if (ViewData["path"].ToString() == "/books")
-                        {
-                            <form class="d-flex">
-                                <input class="form-control me-sm-2" name="q" type="search" placeholder="Search">
-                                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                            </form>
-                        }
-                    </div>
-                }
-                else
-                {
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav nav-pills justify-content-end flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Author/Index">Auteur</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Editor/Index">Editeur</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Books/Index">Livres</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Category/Index">Categorie</a>
-                            </li>
-                        </ul>
-                    </div>
-                }
-            </div>
-        </nav>
-    </header>
+                    @*}
+                                    <a class="navbar-brand" asp-area="" asp-page="/Index"><img width="150" src="~/bibliotech.png" /></a>*@
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    @if (!ViewData["path"].ToString().StartsWith("/admin"))
+                    {
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark font-weight-bolder" asp-area="" asp-page="/Index">Accueil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark font-weight-bolder" asp-area="" asp-page="/Books">Nos Livres</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark font-weight-bolder" asp-area="" asp-page="/About">À propos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark font-weight-bolder" asp-area="" asp-page="/Blog/Index">Blog</a>
+                                </li>
+                            </ul>
+                            @if (ViewData["path"].ToString() == "/books")
+                            {
+                                <form class="d-flex search-form">
+                                    <input class="form-control me-sm-2" name="q" type="search" placeholder="Search">
+                                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                                </form>
+                            }
+                            else if (ViewData["path"].ToString() == "/blog" || ViewData["path"].ToString() == "/login" || ViewData["path"].ToString() == "/signup")
+                            {
+                                <form class="d-flex login-form">
+                                    <a class="btn btn-outline-primary mr-2 my-2 my-sm-0" asp-area="" asp-page="/Login">Log In</a>
+                                    <a class="btn btn-outline-secondary mr-2 my-2 my-sm-0" asp-area="" asp-page="/Signup">Sign Up</a>
+                                </form>
+                            }
+                            else if (ViewData["path"].ToString().StartsWith("/blog"))
+                            {
+                                <form class="d-flex sigout-form">
+                                <a class="btn btn-outline-success mr-2 my-2 my-sm-0" asp-area="" asp-page="/Blog/Write">Write<i style="margin-left:3px;" class="fa-solid fa-pen-nib"></i></a>
+                                         <a class="btn btn-outline-danger mr-2 my-2 my-sm-0" asp-area="" asp-page="/Logout">Sign Out</a>
+                                </form>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav nav-pills justify-content-end flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark font-weight-bolder" asp-area="" asp-page="/Admin/Author/Index">Auteur</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark font-weight-bolder" asp-area="" asp-page="/Admin/Editor/Index">Editeur</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark font-weight-bolder" asp-area="" asp-page="/Admin/Books/Index">Livres</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark font-weight-bolder" asp-area="" asp-page="/Admin/Category/Index">Categorie</a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </nav>
+        </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="">
             @*if (ViewData["path"].ToString().StartsWith("/admin/") && @ViewData["model"]!=null)
             {
                 <div class="mt-5 text-center">
@@ -96,7 +128,7 @@
             @RenderBody()
         </main>
     </div>
-    @if (!ViewData["path"].ToString().StartsWith("/admin"))
+    @if (!ViewData["path"].ToString().StartsWith("/admin") && ViewData["path"].ToString() != "/login" && ViewData["path"].ToString() != "/signup" && ViewData["path"].ToString() != "/blog/home")
     {
     <footer class="border-top footer text-muted">
         <div class="container">

@@ -39,3 +39,22 @@
 </tbody>
 </table>
 </div>
+@if (Model.index > 0)
+{
+	<script>
+		var rows = document.getElementsByTagName("tr");
+		var time;
+		var row;
+		for (var i = 1; i < rows.length; i++) {
+			if (rows[i].getElementsByTagName("td")[0].innerHTML === "@Model.index") {
+				row = rows[i];
+				row.scrollIntoView();
+				row.style.border = "3px solid #F7CA18";
+				time = setTimeout(() => {
+					row.style.border = "inherit";
+					clearTimeout(time);
+				}, 5000);
+			}
+		}
+	</script>
+}

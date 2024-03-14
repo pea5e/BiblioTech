@@ -1,0 +1,38 @@
+﻿@page
+@model BiblioTech.Pages.Blog.HomeModel
+@{
+}
+<div class="search-result w-100 d-flex justify-content-md-center align-items-center flex-column ">
+    <div class="grid-container">
+        @foreach (Article a in Model.articles)
+        {
+            <div class="post card">
+                <div class="header_post">
+                    <img src="@a.img" alt="">
+                </div>
+
+                <div class="body_post">
+                    <div class="post_content">
+
+                        <h1>@a.titre</h1>
+                        <p>
+                            @a.para
+                        </p>
+
+                        <div class="container_infos">
+                            <div class="postedBy">
+                                <span>Blogger</span>
+                                @a.writer.name
+                            </div>
+
+                            <div class="container_date">
+                                <span>@a.date.ToShortDateString()</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

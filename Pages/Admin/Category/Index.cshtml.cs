@@ -7,12 +7,14 @@ namespace BiblioTech.Pages.Admin.Category
     public class CategoryModel : PageModel
     {
 
-        public List<Categorie> listCategories = Categorie.GetCategories() ;
+        public List<Categorie> listCategories = Categorie.GetCategories();
+        public int index = 0;
         public void OnGet()
         {
         }
         public void OnPost()
         {
+            index = Int32.Parse(Request.Form["id"]);
         }
     }
 }
